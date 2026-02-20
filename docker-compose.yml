@@ -1,0 +1,19 @@
+services:
+  mlflow:
+    image: python:3.11-slim
+    container_name: mediscale-mlflow
+    working_dir: /mlflow
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./mlops/mlflow:/mlops/mlflow
+      - ./artifacts:/mlops/artifacts
+    command: >
+      bash -lc "
+      pip install --no-cache-dir mlflow==2.12.1 &&
+      mlflow server
+        --host 0.0.0.0
+        --port 5050
+        --backend-store-uri sqlite:////mlops/mlflow/mlflow.db
+        --default-artifact-root /mlops/artifacts
+      "

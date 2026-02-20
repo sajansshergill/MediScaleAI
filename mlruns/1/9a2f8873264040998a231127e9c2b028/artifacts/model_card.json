@@ -1,0 +1,25 @@
+{
+  "problem": "30-day readmission prediction (synthetic)",
+  "model": "LogisticRegression",
+  "metrics": {
+    "roc_auc": 0.8101499683048076,
+    "avg_precision": 0.8141786212678324,
+    "accuracy": 0.7464788732394366
+  },
+  "features": {
+    "categorical": [
+      "sex",
+      "chief_complaint"
+    ],
+    "numeric": [
+      "age",
+      "hr",
+      "sbp",
+      "dbp",
+      "wbc",
+      "lactate",
+      "los_days"
+    ]
+  },
+  "notes": "Baseline model for pipeline validation; replace with distributed training later (Ray/Spark)."
+}
